@@ -1,13 +1,12 @@
 
-##  Cyclists Data sets
+##  Cyclists Data Analysis
 Analysis to identify trends and pattern on how annual members and casual riders use of bikes
 
 # Steps:
-Data preparation: Reading and understanding data
-Data Processing: Data cleaning, data manipulation
-Analyzing data: visualizing data
+- Data preparation: Reading and understanding data
+- Data Processing: Data cleaning, data manipulation
+- Analyzing data: visualizing data
  
-
 
 # Import libraries 
 library ('lubridate')
@@ -17,10 +16,9 @@ library(readr)
 
 
 # Set the directory 
-setwd("C:/Users/Admin/Desktop/Portfolio/Cyclistic_Bike-sharing/Data") 
+setwd("C:/Users/Admin/Desktop/Data") 
 
-
-# Import data sets
+# Import datasets
 bike_202108 <- read.csv("202108-divvy-tripdata.csv")
 bike_202109 <- read.csv("202109-divvy-tripdata.csv")
 bike_202110 <- read.csv("202110-divvy-tripdata.csv")
@@ -35,7 +33,7 @@ bike_202206 <- read.csv("202206-divvy-tripdata.csv")
 bike_202207 <- read.csv("202207-divvy-tripdata.csv")
 
 
-# Merge all the CSV files into one data frame
+# Merge all the CSV files into one dataframe
 riders <- list.files(path="C:/Users/Admin/Desktop/Portfolio/Cyclistic_Bike-sharing/Data") %>% 
   lapply(read_csv) %>% 
   bind_rows 
@@ -53,7 +51,6 @@ colnames(riders)
 
 # check the structure/ datatype of the dataframe
 str(riders)
-
 
 # check for missing values
 missing_num <- colSums(is.na(riders))
@@ -166,5 +163,5 @@ ggplot(riders, aes(x = member_casual, fill = rideable_type)) +
 
 
 # Export data frame
-write.table(riders, file='C:/Users/Admin/Desktop/Portfolio/Cyclistic_Bike-sharing/riders.csv')
+write.table(riders, file='C:/Users/Admin/Desktop/Data/riders.csv')
 
